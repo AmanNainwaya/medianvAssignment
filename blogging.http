@@ -27,25 +27,3 @@ Content-Type: application/json
 ### 
 // Delete the user details by the given user Id 
 DELETE http://localhost:4000/user/1/
-
-
-###
-GET http://localhost:4000/comments/
-
-###
-POST http://localhost:4000/comment/
-
-{
-    content: "Done!",
-}
-
-###
-PUT http://localhost:4000/comment/2/
-
-{
-    content: "Very Bad",
-}
-
-
-###
-DELETE http://localhost:4000/comment/2/
