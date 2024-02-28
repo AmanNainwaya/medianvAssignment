@@ -35,3 +35,34 @@ Content-Type: application/json
 // Delete the user details by the given user Id 
 // API 5 
 DELETE http://localhost:4000/user/1/
+
+
+
+
+GET http://localhost:4000/comments/
+
+
+POST http://localhost:4000/comment/
+Content-Type: application/json
+
+{
+  "content": "Great job!",
+  "author_id": 1,
+  "blog_id":1,
+}
+
+
+
+
+
+PUT http://localhost:4000/comments/2/
+Content-Type: application/json
+
+{
+  "content": "Great job!",
+  "author_id": 2,
+  "blog_id":2,
+}
+
+
+DELETE http://localhost:4000/comment/1/
