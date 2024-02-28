@@ -51,7 +51,5 @@ Create a Comment
 POST /comment
 {
   "content": "Great post!",
-  "author_id": 1,
-  "blog_id": 1
 }
 
