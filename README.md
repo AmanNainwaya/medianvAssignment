@@ -24,17 +24,17 @@ GET / - Get a list of all users.
 
 POST /user - Create a new user.
 
-PUT /user/:id - Update user details.
+PUT /users/:id - Update user details.
 
-DELETE /user/:id - Delete a user.
+DELETE /users/:id - Delete a user.
 
 GET /comments - Get a list of all comments.
 
 POST /comment - Create a new comment.
 
-PUT /comment/:id - Update comment details.
+PUT /comments/:id - Update comment details.
 
-DELETE /comment/:id - Delete a comment.
+DELETE /comments/:id - Delete a comment.
 
 #Sample Requests
 Create a User
