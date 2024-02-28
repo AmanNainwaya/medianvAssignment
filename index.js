@@ -110,7 +110,7 @@ app.get("/comments", async (request, response) => {
   //create a user into data base
   // API 2
   
-  app.post("/user/", async (request, response) => {
+  app.post("/comment/", async (request, response) => {
     const { content, author_id, blog_id } = request.body;
     const createCommentQuery = ` insert into comments(content,
       author_id,blog_id) 
@@ -123,7 +123,7 @@ app.get("/comments", async (request, response) => {
   //update the details of the Comment using  ID
   // API 3
   
-  app.put("/comments/:id/", async (request, response) => {
+  app.put("/comment/:id/", async (request, response) => {
     const { id } = request.params;
     const { content, author_id, blog_id } = request.body;
     const updateCommentDetailsQuery = `update comments set 
@@ -136,7 +136,7 @@ app.get("/comments", async (request, response) => {
   // delete the comment details
   //API 4
   
-  app.delete("/comments/:Id/", async (request, response) => {
+  app.delete("/comment/:Id/", async (request, response) => {
     const { id } = request.params;
     const deleteCommentQuery = `
     DELETE FROM
