@@ -1,11 +1,9 @@
-
-// API 1
+###
 // get all the users details from the data base 
 GET http://localhost:4000/
+
+
 ###
-// API 2
-// post the new user into data base. 
-//user is auto incremented
 // create a new user by chnaging the details below and run
 POST http://localhost:4000/user/
 Content-Type: application/json
@@ -16,13 +14,8 @@ Content-Type: application/json
 }
 
 
-
-
-
-
 ###
 // update the user details based on user ID given 
-//API 4
 PUT http://localhost:4000/user/2/
 Content-Type: application/json
 
@@ -33,5 +26,26 @@ Content-Type: application/json
 
 ### 
 // Delete the user details by the given user Id 
-// API 5 
 DELETE http://localhost:4000/user/1/
+
+
+###
+GET http://localhost:4000/comments/
+
+###
+POST http://localhost:4000/comment/
+
+{
+    content: "Done!",
+}
+
+###
+PUT http://localhost:4000/comment/2/
+
+{
+    content: "Very Bad",
+}
+
+
+###
+DELETE http://localhost:4000/comment/2/
