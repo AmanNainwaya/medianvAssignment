@@ -32,17 +32,17 @@ initializeDbAndServer();
 
 const convertDbObject = (objectItem) => {
   return {
-    id: objectItem.id,
-    username: objectItem.username,
-    email: objectItem.email,
+    name: objectItem.name,
+    img: objectItem.img,
+    summary: objectItem.summary,
   };
 };
 
 app.get("/", async (request, response) => {
-  const getUsersQuery = `select * from users`;
-  const getUsersQueryResponse = await database.all(getUsersQuery);
+  const getBookQuery = `select * from books`;
+  const getBookQueryResponse = await database.all(getBookQuery);
   response.send(
-    getUsersQueryResponse.map((eachUser) => convertDbObject(eachUser))
+    getBookQueryResponse.map((eachBook) => convertDbObject(eachBook))
   );
 });
 
@@ -50,102 +50,44 @@ app.get("/", async (request, response) => {
 // API 2
 
 app.post("/user/", async (request, response) => {
-  const { username, email } = request.body;
-  const createUserQuery = ` insert into users(username,
-    email) 
-    values('${username}','${email}');`;
-  const createUserQueryResponse = await database.run(createUserQuery);
-  response.send(`User Added to users`);
+  const { name, img, summary } = request.body;
+  const createBookQuery = ` insert into users(name,
+    img,summary) 
+    values('${name}','${img}','${summary}');`;
+  const createBookQueryResponse = await database.run(createBookQuery);
+  response.send(`Book Added to books`);
 });
 
 
 //update the details of the user using user ID
 // API 3
 
-app.put("/user/:id/", async (request, response) => {
-  const { id } = request.params;
-  const { username, email } = request.body;
-  const updateUserDetailsQuery = `update users set 
-  username = '${username}' , email = '${email}' 
-  where id = ${id};`;
-  await database.run(updateUserDetailsQuery);
-  response.send("User Details Updated");
+app.put("/book/:name/", async (request, response) => {
+  const { name } = request.params;
+  const { name, img, summary } = request.body;
+  const updateBookDetailsQuery = `update books set 
+  name = '${name}' , img = '${img}', summary = '${summary}' 
+  where name = ${name};`;
+  await database.run(updateBookDetailsQuery);
+  response.send("Book Details Updated");
 });
 
 // delete the user details
 //API 4
 
-app.delete("/user/:Id/", async (request, response) => {
-  const { id } = request.params;
+app.delete("/user/:name/", async (request, response) => {
+  const { name } = request.params;
   const deleteuserQuery = `
   DELETE FROM
-    users
+    books
   WHERE
-    id = ${id};`;
-  await database.run(deleteUserQuery);
-  response.send("User Removed");
+    name = ${name};`;
+  await database.run(deleteBookQuery);
+  response.send("Book Removed");
 });
 
 
-// get all comments
-// API 5
 
-const convertCommentDbObject = (objectItem) => {
-    return {
-      content: objectItem.content,
-      author_id: objectItem.author_id,
-      blog_id: objectItem.blog_id,
-    };
-  };
-
-
-app.get("/comments", async (request, response) => {
-    const getCommentQuery = `select * from comments`;
-    const getCommentQueryResponse = await database.all(getCommentQuery);
-    response.send(
-      getCommentQueryResponse.map((eachComment) => convertCommentDbObject(eachComment))
-    );
-  });
-  
-  //create a comment into data base
-  // API 2
-  
-  app.post("/comment/", async (request, response) => {
-    const { content, author_id, blog_id } = request.body;
-    const createCommentQuery = ` insert into comments(content,
-      author_id,blog_id) 
-      values('${content}','${author_id}','${blog_id}');`;
-    const createCommentQueryResponse = await database.run(createCommentQuery);
-    response.send(`Comment Added to comments`);
-  });
-  
-  
-  //update the details of the Comment using  ID
-  // API 3
-  
-  app.put("/comment/:id/", async (request, response) => {
-    const { id } = request.params;
-    const { content, author_id, blog_id } = request.body;
-    const updateCommentDetailsQuery = `update comments set 
-    content = '${username}' , author_id = '${author_id}' , blog_id = '${blog_id}'
-    where id = ${id};`;
-    await database.run(updateCommentDetailsQuery);
-    response.send("Comment Details Updated");
-  });
-  
-  // delete the comment details
-  //API 4
-  
-  app.delete("/comment/:Id/", async (request, response) => {
-    const { id } = request.params;
-    const deleteCommentQuery = `
-    DELETE FROM
-      comments
-    WHERE
-      id = ${id};`;
-    await database.run(deleteCommentQuery);
-    response.send("comment Removed");
-  });
 
 
 
