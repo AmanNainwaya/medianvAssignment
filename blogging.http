@@ -31,6 +31,8 @@ undermine Dumbledore's authority at Hogwarts and discredit Harry."
 }
 ### 
 // Delete the book details 
+
+
 DELETE http://localhost:3000/book/"Harry Potter and the Order of the Phoenix"/
 
 
@@ -38,8 +40,4 @@ DELETE http://localhost:3000/book/"Harry Potter and the Order of the Phoenix"/
 
 
 
-{
-    content: "Modified Content",
-}
 
-DELETE http://localhost:4000/comment/2/
