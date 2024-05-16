@@ -1,11 +1,11 @@
 ###
 // get all the books details from the data base 
-GET http://localhost:4000/
+GET http://localhost:3000/
 
 
 ###
 // create a new book 
-POST http://localhost:4000/book/
+POST http://localhost:3000/book/
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ undermine Dumbledore's authority at Hogwarts and discredit Harry."
 
 ###
 // update the book details 
-PUT http://localhost:4000/book/"Harry Potter and the Order of the Phoenix"/
+PUT http://localhost:3000/book/"Harry Potter and the Order of the Phoenix"/
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ undermine Dumbledore's authority at Hogwarts and discredit Harry."
 }
 ### 
 // Delete the book details 
-DELETE http://localhost:4000/book/"Harry Potter and the Order of the Phoenix"/
+DELETE http://localhost:3000/book/"Harry Potter and the Order of the Phoenix"/
 
 
 
